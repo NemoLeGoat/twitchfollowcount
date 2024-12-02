@@ -1,0 +1,140 @@
+/* Styles de base */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #000000;
+    color: white; /* Texte blanc global */
+}
+
+/* Style du compteur */
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* Espacement entre les éléments */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Taille fixe pour la largeur */
+    height: 60px; /* Taille fixe pour la hauteur */
+    border-radius: 50px 0 0 50px; /* Border arrondie uniquement à gauche */
+    position: relative;
+    animation: neonGlow 1.5s ease-in-out infinite alternate; /* Animation de glow néon */
+    color: white; /* Texte blanc dans le compteur */
+}
+
+/* Animation de Glow néon pulsant */
+@keyframes neonGlow {
+    0% {
+        box-shadow: 0 0 5px #2b00ff, 0 0 10px #2b00ff, 0 0 20px #2b00ff;
+        border: 3px solid #2b00ff;
+    }
+    50% {
+        box-shadow: 0 0 10px #2b00ff, 0 0 20px #2b00ff, 0 0 40px #2b00ff;
+        border: 3px solid #2b00ff;
+    }
+    100% {
+        box-shadow: 0 0 5px #2b00ff, 0 0 10px #2b00ff, 0 0 20px #2b00ff;
+        border: 3px solid #2b00ff;
+    }
+}
+
+/* Style pour le logo */
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;  /* Position absolue pour le chevauchement */
+    left: 0;  /* Aligne le côté droit du logo avec le côté gauche du conteneur */
+    top: 50%; /* Centre verticalement le logo */
+    transform: translateY(-50%); /* Ajuste précisément le centrage vertical */
+    z-index: -2; /* Placer le logo sous la bordure */
+}
+
+/* Le logo s'ajuste à l'intérieur de son conteneur */
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Détails de la chaîne */
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Centrage vertical des éléments */
+    text-align: center;  /* Centrage horizontal des éléments */
+    flex-grow: 1;  /* Occupe l'espace restant */
+}
+
+/* Style du nom */
+.name-container {
+    position: absolute;  /* Permet de positionner le nom en haut du border */
+    top: -10px;  /* Espace de 10px du haut */
+    left: 50%;
+    transform: translateX(-50%);  /* Centrage horizontal */
+    width: 100%;
+    text-align: center;  /* Centrage du texte */
+}
+
+.details .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: top;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Empêche le texte de déborder */
+    white-space: nowrap; /* Empêche le texte de se diviser sur plusieurs lignes */
+    color: white; /* Nom en blanc */
+}
+
+/* Style du compteur de followers */
+.subscribers-count {
+    font-size: 22px;
+    font-weight: bold;
+    color: white; /* Compteur de followers en blanc */
+    position: absolute;  /* Positionnement absolu */
+    bottom: -7px;  /* Positionne le compteur à 10px du bas de la bordure */
+    left: 60%;  /* Centre horizontalement le compteur */
+    transform: translateX(-50%);  /* Ajuste pour centrer parfaitement */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Empêche le texte de déborder */
+    white-space: nowrap; /* Empêche le texte de se diviser sur plusieurs lignes */
+}
+
+/* Style du badge "ON AIR" */
+.on-air {
+    margin-left: 10px;
+    padding: 5px 10px;
+    color: #fff;
+    background: red;
+    border-radius: 5px;
+    font-size: 10px;
+    text-align: center;
+    display: none;  /* Initialement masqué */
+    animation: blink 1s infinite; /* Animation de clignotement pour "ON AIR" */
+    position: absolute;  /* Position absolue pour le badge */
+    top: 18px;  /* Décale légèrement vers le bas pour qu'il ne touche pas la bordure */
+    right: 10px;  /* Place à droite à l'intérieur de la bordure */
+    z-index: 2; /* S'assure que le badge soit au-dessus de l'élément */
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Affichage du badge "ON AIR" lorsqu'il a la classe "live" */
+.on-air.live {
+    display: inline-block;
+}
+
