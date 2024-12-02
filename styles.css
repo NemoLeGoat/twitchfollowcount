@@ -138,3 +138,53 @@ body {
     display: inline-block;
 }
 
+/* Style du compteur rose */
+.pink-counter {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Taille fixe pour la largeur */
+    height: 60px; /* Taille fixe pour la hauteur */
+    border-radius: 50px 0 0 50px; /* Border arrondie uniquement à gauche */
+    position: relative;
+    animation: neonGlowPink 1.5s ease-in-out infinite alternate; /* Animation de glow néon rose */
+    color: white; /* Texte blanc dans le compteur */
+    border: 3px solid #ff007f; /* Bordure rose */
+}
+
+/* Animation de Glow néon rose pulsant */
+@keyframes neonGlowPink {
+    0% {
+        box-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #ff007f;
+    }
+    50% {
+        box-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 40px #ff007f;
+    }
+    100% {
+        box-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #ff007f;
+    }
+}
+
+/* Le logo dans le compteur rose */
+.pink-counter .logo img {
+    border: 2px solid #ff007f; /* Bordure autour du logo */
+}
+
+/* Le badge "ON AIR" dans le compteur rose */
+.pink-counter .on-air {
+    background: #ff007f; /* Couleur de fond rose pour "ON AIR" */
+    color: #fff; /* Texte blanc */
+    animation: blinkPink 1s infinite; /* Animation rose */
+}
+
+/* Animation clignotante pour le badge rose */
+@keyframes blinkPink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
