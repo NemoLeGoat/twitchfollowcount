@@ -2,6 +2,12 @@
 const clientId = 'gp762nuuoqcoxypju8c569th9wz7q5';
 const token = '9exz1j5tl0nn4vlrmam1x4aho5q6qw';
 
+// Fonction pour récupérer le paramètre "username" depuis l'URL
+function getUsernameFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('username'); // Récupère le paramètre "username"
+}
+
 // Fonction pour récupérer l'ID de la chaîne à partir de son nom d'utilisateur
 async function getChannelId(username) {
     try {
@@ -23,7 +29,7 @@ async function getChannelId(username) {
             return null;
         }
 
-        return data.data[0].id;  // Retourne l'ID de la chaîne
+        return data.data[0].id; // Retourne l'ID de la chaîne
     } catch (error) {
         console.error('Erreur lors de la récupération de l\'ID de la chaîne :', error.message);
         return null;
@@ -82,7 +88,7 @@ async function checkIfOnAirPink(channelId) {
         });
 
         if (!streamResponse.ok) throw new Error(`Erreur flux : ${streamResponse.status}`);
-        
+
         const streamData = await streamResponse.json();
         const isOnAir = streamData.data.length > 0;
 
@@ -101,7 +107,7 @@ async function checkIfOnAirPink(channelId) {
 
 // Fonction principale pour récupérer et afficher les données de la chaîne
 async function fetchAndDisplayTwitchDataPink() {
-    const username = "votre_nom_utilisateur_rose"; // Remplacez par le nom d'utilisateur pour le compteur rose
+    const username = getUsernameFromURL(); // Récupère le nom d'utilisateur depuis l'URL
     const logoElement = document.getElementById('channel-logo-pink');
     const nameElement = document.getElementById('channel-name-pink');
 
@@ -110,20 +116,24 @@ async function fetchAndDisplayTwitchDataPink() {
         return;
     }
 
-    const channelData = await getTwitchDataByUsername(username);
+    if (username) {
+        const channelData = await getTwitchDataByUsername(username);
 
-    if (channelData) {
-        updateFollowerCounterPink(channelData.followers);
+        if (channelData) {
+            updateFollowerCounterPink(channelData.followers);
 
-        logoElement.src = channelData.logo;
-        nameElement.textContent = channelData.displayName;
+            logoElement.src = channelData.logo;
+            nameElement.textContent = channelData.displayName;
 
-        const channelId = await getChannelId(username);
-        if (channelId) {
-            await checkIfOnAirPink(channelId);
+            const channelId = await getChannelId(username);
+            if (channelId) {
+                await checkIfOnAirPink(channelId);
+            }
+        } else {
+            console.error(`Aucune donnée trouvée pour ${username}.`);
         }
     } else {
-        console.error(`Aucune donnée trouvée pour ${username}.`);
+        console.error("Nom d'utilisateur non trouvé dans l'URL.");
     }
 }
 
