@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur Rose</title>
+    
+    <!-- Styles Odometer -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/odometer/themes/odometer-theme-default.css">
+    
+    <!-- Styles personnalisés -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Conteneur principal du compteur rose -->
+<div class="counter pink-counter">
+    <!-- Section logo de la chaîne -->
+    <div class="logo">
+        <img id="channel-logo-pink" src="" alt="Logo de la chaîne">
+    </div>
+    
+    <!-- Section détails de la chaîne -->
+    <div class="details">
+        <div class="name-container">
+            <p class="name" id="channel-name-pink">Nom de la chaîne</p>
+            <div class="on-air" id="on-air-pink"></div> <!-- Badge "ON AIR" -->
+        </div>
+        <p class="subscribers-count">
+            <span class="symbol">▶</span>
+            <span id="sub-count-pink" class="odometer">0</span>
+            <span class="symbol">◀</span>
+        </p>
+    </div>
+</div>
+
+<!-- Script Odometer -->
+<script src="https://cdn.jsdelivr.net/npm/odometer/odometer.min.js"></script>
+
+<!-- Script personnalisé -->
+<script src="script-pink.js"></script>
+
+</body>
+</html>
